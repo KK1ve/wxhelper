@@ -601,11 +601,11 @@ int HookSearchContact() {
   if (search_contact_flag_) {
     return 2;
   }
-  // DWORD hook_error_code_addr = base + WX_SEARCH_CONTACT_ERROR_CODE_HOOK_OFFSET;
-  // error_code_next_addr_ = base + WX_SEARCH_CONTACT_ERROR_CODE_HOOK_NEXT_OFFSET;
-  // error_code_back_addr_ = hook_error_code_addr + 0x5;
-  // Utils::HookAnyAddress(hook_error_code_addr, (LPVOID)HandleErrorCode,
-  //                       error_code_asm_code_);
+   DWORD hook_error_code_addr = base + WX_SEARCH_CONTACT_ERROR_CODE_HOOK_OFFSET;
+   error_code_next_addr_ = base + WX_SEARCH_CONTACT_ERROR_CODE_HOOK_NEXT_OFFSET;
+   error_code_back_addr_ = hook_error_code_addr + 0x5;
+   Utils::HookAnyAddress(hook_error_code_addr, (LPVOID)HandleErrorCode,
+                         error_code_asm_code_);
 
   DWORD hook_user_info_addr = base + WX_SEARCH_CONTACT_DETAIL_HOOK_OFFSET;
   user_info_next_addr_ = base + WX_SEARCH_CONTACT_DETAIL_HOOK_NEXT_OFFSET;

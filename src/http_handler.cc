@@ -235,6 +235,7 @@ string Dispatch(struct mg_connection *c, struct mg_http_message *hm) {
             {"province",  Utils::WCharToUTF8(user->province)},
             {"sex", user->sex},
             {"signature",  Utils::WCharToUTF8(user->signature)},
+            {"errorCode",  user->error_code},
             // {"v2",  Utils::WCharToUTF8(user->v2)},
             {"v3",  Utils::WCharToUTF8(user->v3)},
             {"V3",  Utils::WCharToUTF8(user->V3)},

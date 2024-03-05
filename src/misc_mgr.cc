@@ -441,14 +441,24 @@ int MiscMgr::SearchContactNetScene(wchar_t *keyword,UserInfo ** user) {
 		popad;
   }
   success = 1;
-  // while (hooks::userinfo.error_code == 1 && hooks::user_info_flag_) {
-  //   Sleep(20);
-  // }
-  // if (hooks::userinfo.error_code == 0) {
+  int i = 0;
+   while (hooks::userinfo.error_code == 1 && hooks::user_info_flag_) {
+       i++;
+       if (i >= 100) {
+           break;
+       }
+     Sleep(20);
+   }
+   i = 0;
+   if (hooks::userinfo.error_code == 0) {
     while (hooks::userinfo.over == false && hooks::user_info_flag_) {
+        i++;
+        if (i >= 50) {
+            break;
+        }
       Sleep(2);
     }
-  // }
+   }
   *user= &hooks::userinfo;
   return success;
 }
